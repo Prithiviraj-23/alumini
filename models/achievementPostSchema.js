@@ -9,14 +9,14 @@ const commentSchema = new mongoose.Schema({
 
 // Define the Photo Schema (used in AchievementPostSchema)
 const photoSchema = new mongoose.Schema({
-    photoUrl: { type: String, required: true },
+    photoUrl: { type: String, },
     caption: String
 });
 
 // Define the Media Schema (used in AchievementPostSchema)
 const mediaSchema = new mongoose.Schema({
-    mediaUrl: { type: String, required: true },
-    mediaType: { type: String, required: true }
+    mediaUrl: { type: String, },
+    mediaType: { type: String, }
 });
 
 // Define the Achievement Post Schema
@@ -24,7 +24,7 @@ const achievementPostSchema = new mongoose.Schema({
     alumnusId: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'Alumini_profile' },
     title: { type: String, required: true },
     description: { type: String, required: true },
-    dateAchieved: { type: Date, required: true },
+    dateAchieved: { type: Date },
     datePosted: { type: Date, default: Date.now },
     likes: { type: Number, default: 0 },
     comments: [commentSchema],

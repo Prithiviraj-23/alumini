@@ -1,0 +1,19 @@
+{
+  "name": "alumini",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^1.7.5",
+    "body-parser": "^1.20.2",
+    "cheerio": "^1.0.0",
+    "express": "^4.19.2",
+    "mongodb": "^6.8.0",
+    "mongoose": "^8.5.4"
+  }
+}

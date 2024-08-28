@@ -1,7 +1,8 @@
 const bcrypt = require("bcrypt");
 const Alumini_profile = require("../models/Alumini_profile_Schema");
 const { uploadProfilePicture } = require("../config/muilterconfig"); // Correct import
-
+const path = require("path");
+const fs = require("fs");
 // Controller to create a new alumni profile
 const createAlumniProfile = async (req, res) => {
   try {
@@ -126,11 +127,9 @@ const updateAlumniProfile = async (req, res) => {
       // Check if the new email is already in use
       const emailExists = await Alumini_profile.findOne({ email });
       if (emailExists && emailExists._id.toString() !== id) {
-        return res
-          .status(400)
-          .json({
-            error: "Email already in use. Please use a different email.",
-          });
+        return res.status(400).json({
+          error: "Email already in use. Please use a different email.",
+        });
       }
       existingProfile.email = email;
     }

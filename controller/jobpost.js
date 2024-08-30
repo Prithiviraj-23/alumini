@@ -2,7 +2,7 @@ const jobPostingSchema = require('../models/job');
 
 const createJobPosting = async (req, res) => {
     try {
-        const { title, description, company, location, postedBy, interviewType } = req.body;
+        const { title, description, company, location, postedBy, interviewType,isActive } = req.body;
 
         // Validate the postedBy field
         if (!postedBy) {
@@ -16,7 +16,8 @@ const createJobPosting = async (req, res) => {
             company,
             location,
             postedBy,
-            interviewType // Include interviewType in the new job posting
+            interviewType,
+            isActive // Include interviewType in the new job posting
         });
 
         await newJobPosting.save();

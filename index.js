@@ -6,7 +6,7 @@ const app = express();
 const userRoutes = require("./routers/userRoutes");
 const newsFeedRoutes = require("./routers/news_feed_Routes");
 const cors = require("cors");
-
+const donation =require('./routers/donation')
 const eventrouter = require("./routers/eventRout");
 
 dbconnect();
@@ -23,7 +23,7 @@ app.use(
 );
 
 app.use("/api", userRoutes);
-
+app.use("/api",donation);
 app.use("/api", newsFeedRoutes);
 
 app.use("/api",eventrouter);

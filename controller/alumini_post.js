@@ -1,7 +1,7 @@
 const path = require('path');
 console.log(path.resolve(__dirname, '../config/multerConfig'));
 
-const upload = require('../config/muilterconfig'); // Note: There's a typo in 'muilterconfig'
+const {upload} = require('../config/muilterconfig'); // Note: There's a typo in 'muilterconfig'
 const AchievementPost = require('../models/achievementPostSchema');
 
 const alumini_post = async (req, res) => {

@@ -22,6 +22,11 @@ const createAlumniProfile = async (req, res) => {
       college,
     } = req.body;
 
+    // Check if the password is provided
+    if (!password) {
+      return res.status(400).json({ error: "Password is required." });
+    }
+
     // Check if the email already exists
     const existingProfile = await Alumini_profile.findOne({ email });
     if (existingProfile) {
@@ -181,20 +186,20 @@ const getaluminidetail = async (req, res) => {
     }
 
     // Read the profile picture file and convert it to base64
-    let profilePictureBase64 = null;
-    if (profile.profilePicture) {
-      const filePath = path.join(
-        __dirname,
-        "../uploads/",
-        path.basename(profile.profilePicture)
-      ); // Adjust the path as necessary
-      profilePictureBase64 = fs.readFileSync(filePath).toString("base64");
-    }
+    // let profilePictureBase64 = null;
+    // if (profile.profilePicture) {
+    //   const filePath = path.join(
+    //     __dirname,
+    //     "../uploads/",
+    //     path.basename(profile.profilePicture)
+    //   ); // Adjust the path as necessary
+    //   profilePictureBase64 = fs.readFileSync(filePath).toString("base64");
+    // }
 
     // Return the profile with the picture as a base64 string
     res.status(200).json({
       ...profile.toObject(), // Convert Mongoose document to plain JavaScript object
-      profilePicture: profilePictureBase64, // Add the base64 image
+     // profilePicture: profilePictureBase64, // Add the base64 image
     });
   } catch (error) {
     console.error("Error retrieving alumni profile:", error);
